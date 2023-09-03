@@ -16,7 +16,5 @@ int main(){
     if ( a == 1 ) cout << "True" << endl;
     else cout << "False" << endl;
 
-    cout << pow(2,0) << endl;
-
     return 0;
 }
