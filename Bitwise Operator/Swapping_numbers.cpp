@@ -11,7 +11,7 @@ int main(){
     // use XOR operator;
     a = a^b; // a = 2
     b = a^b; // b = 10
-    a = b^a; // a = 8
+    a = a^b; // a = 8
     cout << "a = "<<a<< ", b = "<<b<<endl;
 
     return 0;
