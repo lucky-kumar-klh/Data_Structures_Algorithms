@@ -1,21 +1,31 @@
 #include <iostream>
-#include <cmath>
+#include <climits>
 using namespace std;
 
 int main() {
-	int T;
-	float L, V1, V2;    // v1 -> hair, v2 -> tortoise
-	// to win t1 < t2
-	// if t1 >= t2 --> print -1
-	//cin >> T;
-	//while ( T-- ){
-	    int t1, t2, diff;     // t1 -> hair, t2 -> tortoise
-	    cin >> L >> V1 >> V2;
-	    t1 = (ceil)(L/V1);
-	    t2 = (ceil)(L/V2);
-	    diff = t1-(t2+1);
-	    if ( diff >= 0 ) cout << diff << endl;
-	    else cout << "-1" << endl;
-	//}
+	// your code goes here
+	int t;
+	cin >> t;
+	int n, count = 0;       
+	while ( t-- ){
+	    cin >> n;
+	    int arr[n];
+		int sum = 0;
+		int min = INT_MAX;
+	    for ( int i = 0; i < n; i++ ) cin >> arr[i];
+	    for ( int j = 0; j < n; j++ ){
+	        if ( min > arr[j] )   {
+				min = arr[j];  // get the least number possible
+				count = j;
+			}
+	    }
+	    for ( int i = 0; i < n; i++ ){
+	        if ( min == arr[count] ){
+	            sum = sum + arr[i];
+	        }
+	    }
+	    cout << sum-arr[count] << endl;
+	    
 	return 0;
+        }
 }
