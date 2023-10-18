@@ -13,7 +13,7 @@ int lastSearch(int arr[], int size, int key){
         }
         if ( arr[mid] < key ){
             start = mid + 1;
-        }
+        } 
         if ( arr[mid] > key ){
             end = mid - 1;
         }
