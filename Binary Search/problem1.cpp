@@ -9,7 +9,8 @@ int binaryFunction(int arr[], int size, int key){
     /* 
         it is clear that --> start+(end-start)/2 == (start+end)/2
         but what if value of (start+end) > INT_MAX, which is not possible
-        So to solve this we write start+(end-start)/2 such that (end-start) is not greater than INT_MAX.
+        So to solve this we write start+(end-start)/2 such that (end-start) 
+        is never greater than INT_MAX.
     */
 
     while ( start <= end )
