@@ -40,7 +40,6 @@ int firstSearch(int arr[], int size, int key){
         }
         mid = start + (end-start)/2;
     }
-    
     return ans;
 }
 int main(){
