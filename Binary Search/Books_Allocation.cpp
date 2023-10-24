@@ -6,6 +6,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 bool isPossible(int arr[], int books, int M, int mid){
+    if ( M > books ) return false; // total students > total books
     int pageSum = 0, student = 1;
     for (int i = 0; i < books; i++){
         if ( arr[i] + pageSum <= mid ){
@@ -31,7 +32,7 @@ int minAllocation(int arr[], int books, int M){
             ans = mid;
             end = mid-1;
         }
-        else {
+        else{
             start = mid+1;
         }
         mid = start + (end-start)/2;
@@ -40,7 +41,7 @@ int minAllocation(int arr[], int books, int M){
 }
 int main(){
     int books = 4;
-    int arr[books] = {12,34,67,90}; // no of Books containg no of pages
+    int arr[books] = {10,20,30,40}; // no of Books containg no of pages
     int M = 2; // no of students
     int ans = minAllocation(arr, books, M);
     cout << "Minimum Allocation should be " << ans << endl;
