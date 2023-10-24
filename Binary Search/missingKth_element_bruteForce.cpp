@@ -18,8 +18,8 @@ int missingK(int arr[], int size, int k){
     return ans;
 }
 int main() {
-    int arr[6] = {2,3,4,7,11,12};
-    int k = 1;
-    int ans = missingK(arr, 6, k);
+    int arr[4] = {1,2,3,4};
+    int k = 2;
+    int ans = missingK(arr, 4, k);
     cout << "K is " << ans;
 }
