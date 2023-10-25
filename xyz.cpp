@@ -1,9 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-	pair<int, int>p;
-	p.first = 3;
-	p.second = 5;
-	cout << p.first << endl;
+	int x1=10, x2=50,y1=30,y2=70;
+	
 	return 0;
 }
