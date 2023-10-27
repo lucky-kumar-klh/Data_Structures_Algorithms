@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-int Max(int arr[], int s, int e){
-    int min = INT_MIN;
-    for (int i = s; i <= e; i++){
-        if ( min < arr[i] )  min = arr[i];
-    }
-    return min;
-}
+// int Max(int arr[], int s, int e){
+//     int min = INT_MIN;
+//     for (int i = s; i <= e; i++){
+//         if ( min < arr[i] )  min = arr[i];
+//     }
+//     return min;
+// }
 int main(){
-    //int height[8] = {4,2,0,3,2,5};
     vector<int> height = {0,1,0,2,1,0,1,3,2,1,2,1};
     // O ( N*N )
     // int count = 0, mini, ans;
