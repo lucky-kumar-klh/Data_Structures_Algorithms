@@ -1,25 +1,20 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-int missingK(int arr[], int size, int k){
-    int ans = 0;
-    int start = 1, end = arr[size-1], count = 0;
-    for ( int i = start, j = 0; i <= end; ){
-        if ( i <= arr[j] ){
-            if ( i != arr[j] )  count++;
-            if ( count == k ){
-                ans = i;
-                break;
-            }
-            i++;
+int missingK(vector<int> arr, int k){
+    int end = arr.size()-1, count = 0, ans, j = 0;
+    for ( int i = 1; 1; i++){
+        if ( i != arr[j] ){
+            ans = i;
+            count++;
         }
-        else  j++;
+        else if ( j < end ) j++;
+        if ( count == k ) break;
     }
-    if ( ans == 0 ) ans = k + arr[size-1];
     return ans;
 }
 int main() {
-    int arr[4] = {1,2,3,4};
+    vector<int> arr = {1,2,3,4};
     int k = 2;
-    int ans = missingK(arr, 4, k);
-    cout << "K is " << ans;
+    int ans = missingK(arr, k);
+    cout << "Missing element is "<< ans << endl;
 }
