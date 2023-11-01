@@ -1,24 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-void swaping(vector<vector<int>>& arr){
-    for (int i = 1; i < arr.size(); i++){
-        for (int j = 0; j < i; j++){
-            arr[i][j] = (arr[i][j]+arr[j][i]) - (arr[j][i] = arr[i][j]);
-        }
-    }
-}
+
 int main() {
-    int temp;
-	vector<vector<int>> arr={{1,1,1,1},
-                             {2,2,2,2},
-                             {3,3,3,3},
-                             {4,4,4,4}};
-    swaping( arr );
-    for(int i = 0; i < arr.size(); i++){
-        for (int j = 0; j < arr.size(); j++){
-            cout << arr[i][j] << " ";
-        }
-        cout << endl;
-    }
+	int t, count, sum;
+	int n, k;
+	//cin >> t;
+	//while ( t-- )
+	//{
+        count = 0;
+	    cin >> n >> k;
+	    vector<int> arr(n);
+	    vector<int> brr;
+	    //int arr[n];
+	    for (int i = 0; i < arr.size(); i++) cin >> arr[i];
+	    // sub-array
+	    for (int i = 0; i <= arr.size()-(k); i++){
+            sum = 0;
+	        for (int j = i; j < i+k; j++ ){
+	            brr.push_back(arr[j]);
+	        }
+	        for (int j = 0; j < brr.size(); j++){
+	            sum = sum | brr[j];
+	        }
+	        if ( sum & 1 == 1 ) count++;
+            brr.clear();
+	    }
+	    cout << count << endl;
+	//}
 	return 0;
 }
