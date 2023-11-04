@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // brute force 
-// O ( N*N )
+// ! O ( N*N )
 // bool isPresent(vector<int> arr){
 //     int s = 0;
 //     while ( s < arr.size()-1 ){
