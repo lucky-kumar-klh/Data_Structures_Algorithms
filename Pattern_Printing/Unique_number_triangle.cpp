@@ -10,10 +10,8 @@ int main(){
         int count = 1;
         for (int j = 0; j <= i; j++){
             cout << i+1 << "  ";
-            i++;
         }
         cout << "\n";
-        
     }
     
 
