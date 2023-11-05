@@ -16,7 +16,7 @@ using namespace std;
 //     return false;
 // }
 //************************************************
-// optimized way --> O(n)
+// ! optimized way --> O(n)
 bool isPresent(vector<int> arr){
     int sum = 0, otherSum = 0, prefix = 0, s = 0;
     // find total sum 
