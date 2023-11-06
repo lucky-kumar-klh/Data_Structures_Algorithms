@@ -18,6 +18,7 @@ int main(){
     // cout << brr;
 
     // *** STRINGS ***
+    // ** Strings are dynamic when compared with char array (like vector) 
 
     string s ;
     // cin >> s;  // Disadvantage -> cin will read after you press enter/tab
