@@ -1,6 +1,8 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
-void rotate(vector<vector<int>>& arr, int k){
+void rotate(vector<vector<int> >& arr, int k){
     if ( k == 0 ) return;
     int start, end;
     // transpose 
@@ -21,7 +23,7 @@ void rotate(vector<vector<int>>& arr, int k){
     return rotate(arr, k-1);
 }
 int main(){
-    vector<vector<int>> arr = {{ 1, 2, 3, 4},
+    vector<vector<int> > arr = {{ 1, 2, 3, 4},
                                { 5, 6, 7, 8},
                                { 9,10,11,12},
                                {13,14,15,16}};
