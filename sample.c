@@ -1,18 +1,12 @@
 #include <stdio.h>
-#include <limits.h>
 int main(){
-    int arr[5] = {10, 9, 8, 7, 6};
-    int max1 = INT_MIN, max2 = INT_MIN;
+    int arr[6] = {1,0,1000,3,-3,-3};
+    int found = 0;
     for (int i = 0; i < 5; i++){
-        if ( arr[i] > max1 ){
-            max2 = max1;
-            max1 = arr[i];
-        }
-        else if ( max2 < arr[i] && max1 != arr[i] ){
-            max2 = arr[i];
-        }
+        for (int j = i+1; j < 6; j++)
+            if ( arr[i] == arr[j] ) found = 1;
     }
-    printf("First Max = %d\n", max1);
-    printf("Second Max = %d",max2);
+    if ( found ) printf("Exist");
+    else printf("Not Found");
     return 0;
 }

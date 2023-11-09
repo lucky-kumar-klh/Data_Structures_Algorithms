@@ -12,7 +12,7 @@ void sortStringBruteForce ( string& sentence ){    // ** O(N^2) **
         if ( swapping == 0 ) break;
     }
 }
-string sortStrings ( string sentence ){   
+void sortStrings ( string sentence ){   // ** O(N) **
     string ans;
     int arr[26] = {0}, index;
     for (int i = 0; i < sentence.size(); i++){
@@ -25,7 +25,7 @@ string sortStrings ( string sentence ){
             ans += c;
         }
     }
-    return ans;
+    cout << "After Sorting : " << ans << "\n\n";
 }
 int main(){
 
@@ -35,8 +35,6 @@ int main(){
     //sortStringBruteForce ( s );
     //cout << "After Soring : " << s << "\n" << endl;
     sortStrings ( s );
-    cout << "After Soring : " << s << "\n" << endl;
-    
 
     return 0;
 }
