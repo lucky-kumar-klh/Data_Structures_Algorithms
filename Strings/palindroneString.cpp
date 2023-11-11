@@ -2,10 +2,10 @@
 using namespace std;
 int main(){
 
-    string s1 = "Lucky";
-    string s2 = "tomot";
+    string s11 = "Lucky";
+    string s1 = "tomot";
 
-    int s = 0, e = s2.size()-1;
+    int s = 0, e = s1.size()-1;
     bool a = 1;
     while ( s <= e ){
         if ( s1[s] != s1[e] ){
