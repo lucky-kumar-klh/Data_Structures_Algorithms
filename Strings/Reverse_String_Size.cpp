@@ -18,10 +18,9 @@ int main(){
     //         count++;
     // }
     // ! OR
-    while ( st[count] != '\0' ) 
+    while ( st[count] != '\0' ){
         count++;
-    
-    
+    }
     cout << "Size of st is " << count;
 
     return 0;
