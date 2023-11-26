@@ -3,7 +3,7 @@ using namespace std;
 int main(){
 
     char arr[] = {'a','p','p','l','e'};
-
+    
     // ! Method I
     //cout << arr;
 
