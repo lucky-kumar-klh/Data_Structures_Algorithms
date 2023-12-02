@@ -16,15 +16,17 @@ void sortArray(vector<int>& arr){
 void print(vector<int>& arr){
     for ( int i : arr )
         cout << i << " ";
+    cout << endl;
 }
 
 int main(){
     vector<int> arr = {10,8,2,3,1,4};
+    cout << "Before Sorting ";
     print(arr);
+    
     sortArray(arr);
 
-    cout << endl;
-
+    cout << "After Sorting ";
     print(arr);
     return 0;
 }
