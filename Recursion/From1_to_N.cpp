@@ -3,13 +3,14 @@ using namespace std;
 
 void printNum(int n){
   
-  if (n == 1){
-    cout << 1 << " ";
+  if (n == 2){
+    cout << 2 << " ";
     return;
   }
   printNum(n-1);
-  cout << n << " ";
-
+  if (n % 2 == 0){
+    cout << n << " ";
+  }
 }
 
 int main(){
