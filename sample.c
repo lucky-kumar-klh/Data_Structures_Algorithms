@@ -1,23 +1,26 @@
 #include <stdio.h>
+#include <string.h>
+
 int main()
 {
-  int a,b,k;
-  scanf("%d %d %d",&a,&b,&k);
-  int max=(a>b)? a:b,min=(a+b)-max,sum=0,prev;
-  printf("The multiples of %d and %d that are less than %d are: ",a,b,k);
-  for(int i=1;(a*i<k)||(b*i<k);i++)
-  {
-    if(a*i<k)
-    {
-      printf("%d ",a*i);
-      sum+=a*i;
-    } 
-    if(b*i<k && (b*i)%a!=0)
-    {
-      printf("%d ",b*i);
-      sum+=b*i;
+    char str[100];
+    int letters = 0, words = 0, sentence = 0;
+    printf("Enter your string: \n");
+    scanf(" %[^\n]s",str);
+    printf("Your string is:%s \n",str);
+    for(int i = 0; str[i] != '\0'; i++){
+        if(str[i] >= 'a' && str[i] <= 'z'|| str[i] >= 'A' && str[i] <= 'Z'){
+            letters++;
+        }
+        else if(str[i] == ' '){
+            words++;
+        }
+        else if(str[i] == '.'){
+            sentence++;
+        }
     }
-  }
-  printf("\nSum of factors: %d",sum);
-  return 0;
+    printf("Number of letters = %d\n",letters);
+    printf("Number of words = %d\n",words);
+    printf("Number of sentences = %d\n",sentence);
+    return 0;
 }

@@ -4,18 +4,20 @@ using namespace std;
 class hero{
 
   private:
-
   int health;
   int attack;
 
   // GETTER => 
   int getHealth(){
-    health = 80;
+    //health = 80;
     return health;
   }
+  
+  void setHealth(int a){
+    health = a;
+  } 
 
   public:
-
   int age;
 };
 int main(){
@@ -25,6 +27,9 @@ int main(){
 
   cout << "Ramesh age : " << ramesh.age << endl;
   // Using getter
+  cout << "Ramesh health : " << ramesh.getHealth() << endl;
+  // Using setter
+  ramesh.setHealth(45);
   cout << "Ramesh health : " << ramesh.getHealth() << endl;
 
   return 0;
