@@ -11,23 +11,32 @@ class student{
 
   // members
 
+  private:       // can't be acessed outside this class
+  float weight;
+
   public:     // acessed from anywhere
   char name;
   int height;
 
-  private:       // can't be acessed outside this class
-  float weight;
+  // ***Declare Setter & Getter under Public Access Modifiers***  
+  void setWeight(int w){
+    weight = w;
+  }            
 
-  void display(){   
-    cout << weight << endl;   // weight is an private class
-  }                         
+  float getWeight(){
+    return weight;
+  }             
 
 };
 int main(){
 
   student s1;
+  //s1.weight = 49;  // ERROR, Cannot access directly private elements
   s1.name = 'A';
   s1.height = 176;
+  cout << "weight of s1 is : " << s1.getWeight() << endl;
+  s1.setWeight(69);
+  cout << "weight of s1 is : " << s1.getWeight() << endl;
 
   return 0;
 }
