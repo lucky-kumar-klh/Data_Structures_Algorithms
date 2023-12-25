@@ -18,6 +18,7 @@ void insertAtHead(Node* &head, int d){
   Node* temp = new Node(d);
   temp -> next = head;   // Linking current node to before the head node
   head = temp;   // Pointing head to current node & Update Head
+  cout << d << " inserted at head" << endl;
 }
 
 void insertAtEnd(Node* &tail, int d){
@@ -25,6 +26,7 @@ void insertAtEnd(Node* &tail, int d){
   Node* temp = new Node(d);
   tail -> next = temp;   // insert link of new temp address to tail node ka next me
   tail = temp;   // Pointing tail to new temp node / current node & update tail
+  cout << d << " inserted at Tail" << endl;
 }
 
 void insertAtPosition(Node* &tail, Node* &head, int position, int d){
@@ -52,6 +54,58 @@ void insertAtPosition(Node* &tail, Node* &head, int position, int d){
   Node* insertNode = new Node(d);  // Creating new node to insert
   insertNode -> next = temp -> next;  // Changing link
   temp -> next = insertNode;  // temp pointing to new / current insert node 
+  cout << d << " inserted at position " << position << endl;
+}
+
+void deleteNode(Node* &head, int position){
+  // deleting 1st Node / Starting Node
+  if (position == 1){
+    Node* temp = head;
+    head = head -> next;   // move head to next node
+    temp -> next = NULL;  // Unlink temp from new head & point to NULL
+    cout << temp -> data << " deleted" << endl;
+    delete temp;  // delete temp 
+  }
+  else {    // deleting any other node or Last node
+    Node* current = head;
+    Node* prev = NULL;
+    int count = 1;
+    while (count < position){
+      prev = current;   // store previous current
+      current = current -> next;  // move next
+      count++;
+    }
+    prev -> next = current -> next;   // Link previous to current's next node
+    current -> next = NULL;
+    cout << current -> data << " deleted" << endl;
+    delete current;
+  }
+}
+
+void findAndDelete(Node* &head, Node* &tail, int d){
+  Node* temp = head;
+  Node* prev = NULL; 
+  int found = 0;
+  while (temp != NULL){
+    if (temp -> data == d){
+      prev -> next = temp -> next;  // Link previous to current's next node
+      if (temp -> next == NULL){   // is temp the last node ?
+        tail = temp -> next;      // then update tail 
+      }
+      temp -> next = NULL;   // Unlink the node to be deleted
+      found = 1;
+      break;
+    }
+    prev = temp;   // store previous node
+    temp = temp -> next;   // move to next node
+  }
+  if (found == 1){
+    delete temp;
+    cout << d << " deleted" << endl;
+  }
+  else {
+    cout << d << " Not found in the List" << endl;
+  }
 }
 
 void print(Node* &head){
@@ -59,6 +113,7 @@ void print(Node* &head){
     cout << "Empty List !" << endl;
   }
   else {
+    cout << "List : ";
     Node* temp = head;    // Create Node & assign head in it to start from head
     while (temp != NULL){
       cout << temp -> data << " ";
@@ -83,7 +138,13 @@ int main(){
   insertAtEnd(tail, 33);
 
   insertAtPosition(tail, head, 6, 90);
+
+  //deleteNode(head, 4);
   
+  print(head);
+
+  findAndDelete(head, tail, 90);
+
   print(head);
 
   cout << "Head : " << head -> data << endl;
