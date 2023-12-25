@@ -19,7 +19,8 @@ class Hero{
     this -> health = temp.health;
     this -> attack = temp.attack; 
   }
-  // OR Using Address Passing method
+
+  // OR Using Poniter Method
    
   // Hero(Hero* temp){
   //   this -> health = temp -> health;

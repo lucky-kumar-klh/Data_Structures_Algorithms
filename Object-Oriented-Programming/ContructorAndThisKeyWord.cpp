@@ -18,6 +18,7 @@ class pokemon{
 
   pokemon(char type, int attack){   // Constructor with Parameter
 
+    // attack = attack;
     // Using 'this' keyword to instead of using same variable name and member name to assign value
     this -> type = type;   // this->type : pointer 'this' pointing to current object's type
     this -> attack = attack;

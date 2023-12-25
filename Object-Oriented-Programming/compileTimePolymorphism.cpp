@@ -18,10 +18,10 @@ class normal{
     }
 
     // **Operator Overloading**
-    void operator+ (normal& obj){
+    void operator+ (normal& obj){   // + operator
       cout << "Hello, + operator changed to print" << endl;
     }
-    void operator() (){
+    void operator() (){    // () operators
       cout << "I am ()" << endl;
     }
 };

@@ -23,6 +23,10 @@ class Female: public human{
     bool isFemale = true;
 };
 
+class Trans: public Male, public Female{  // Multiple Inheritance
+  // This Child class has now access of all properties of Male & Female
+};
+
 int main(){
   
   // Lucky of Child Class now has All properties of Child Class + Parent Class
