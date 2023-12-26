@@ -7,7 +7,7 @@ class Node{
     int data;
     Node* next;
 
-  // Using Contructor to Implement data and address
+  // Using Contructor to Implement data and NULL adress for initialization
   Node(int data){
     this -> data = data;
     this -> next = NULL;
