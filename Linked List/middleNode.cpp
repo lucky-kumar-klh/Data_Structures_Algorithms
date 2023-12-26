@@ -41,6 +41,28 @@ Node* findMiddle(Node *head) {
 
 }
 
+// 2nd Approach
+// *** Optimised Solution ***
+Node* findMiddle(Node *head) {
+
+  if (head == NULL || head -> next == NULL){
+    return head;
+  }
+
+  Node* fast = head -> next;
+  Node* slow = head;
+
+  while (fast != NULL){
+    fast = fast -> next;  // move fast to next node 
+      if (fast != NULL){
+        fast = fast -> next;  // move fast to next node only if fast != NULL 
+      }
+      slow = slow -> next;
+    }
+    
+    return slow;
+}
+
 int main(){
   
   return 0;
