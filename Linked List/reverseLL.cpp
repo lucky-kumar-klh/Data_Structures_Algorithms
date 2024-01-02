@@ -50,8 +50,8 @@ Node* reverseList(Node* &head){
 Node* reverseListRecusively(Node* head, Node* current, Node* prev){
   // base case
   if (current == NULL){
-    //head = prev;
-    return prev;
+    head = prev;
+    return head;
   }
 
   Node* forward = current -> next;
@@ -61,7 +61,7 @@ Node* reverseListRecusively(Node* head, Node* current, Node* prev){
   reverseListRecusively(head, current, prev);
 }
 
-void printList(Node* &head){
+void printList(Node* head){
   if (head == NULL)
     cout << "Empty LL !" << endl;
   else {
@@ -88,7 +88,10 @@ int main(){
   Node* current = head;
   Node* prev = NULL;
 
-  reverseListRecusively(head, current, prev);
+  Node* newHead = reverseListRecusively(head, current, prev);
+  // Node* newHead = reverseList(head);
+
+  printList(newHead);
 
   // cout << "Head : " << head -> data << endl;
   // cout << "Head : " << head -> next << endl;
