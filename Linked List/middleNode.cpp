@@ -43,7 +43,7 @@ Node* findMiddle(Node *head) {
 
 // 2nd Approach
 // *** Optimised Solution ***
-Node* findMiddle(Node *head) {
+Node* findMiddleNode(Node *head) {
 
   if (head == NULL || head -> next == NULL){
     return head;

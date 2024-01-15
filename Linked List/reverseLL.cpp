@@ -16,7 +16,7 @@ class Node{
 void insertNode(Node* &head, int d){
   Node* temp = new Node(d);
   // Empty LL
-  if (head == NULL){
+  if (head= NULL){
     temp -> next = head;
     head = temp;
   }
@@ -47,19 +47,19 @@ Node* reverseList(Node* &head){
 }
 
 // Reversing List By Recursion
-Node* reverseListRecusively(Node* head, Node* current, Node* prev){
-  // base case
-  if (current == NULL){
-    head = prev;
-    return head;
-  }
+// Node* reverseListRecusively(Node* head, Node* current, Node* prev){
+//   // base case
+//   if (current == NULL){
+//     head = prev;
+//     return head;
+//   }
 
-  Node* forward = current -> next;
-  current -> next = prev;
-  prev = current;
-  current = forward;
-  reverseListRecusively(head, current, prev);
-}
+//   Node* forward = current -> next;
+//   current -> next = prev;
+//   prev = current;
+//   current = forward;
+//   reverseListRecusively(head, current, prev);
+// }
 
 void printList(Node* head){
   if (head == NULL)
@@ -83,15 +83,15 @@ int main(){
   insertNode(head, 13);
   insertNode(head, 14);
 
-  printList(head);
+  // printList(head);
 
-  Node* current = head;
-  Node* prev = NULL;
+  // Node* current = head;
+  // Node* prev = NULL;
 
-  Node* newHead = reverseListRecusively(head, current, prev);
+  // Node* newHead = reverseListRecusively(head, current, prev);
   // Node* newHead = reverseList(head);
 
-  printList(newHead);
+  printList(head);
 
   // cout << "Head : " << head -> data << endl;
   // cout << "Head : " << head -> next << endl;
