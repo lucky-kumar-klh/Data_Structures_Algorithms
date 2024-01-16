@@ -1,4 +1,5 @@
-nsert(2);
-  // insert(3);
-  // insert(4);
-  // insert(5);
+void removeLoop(){
+//   if (head == NULL){
+//     return 
+//   }
+// }
