@@ -8,20 +8,20 @@ class Node{
   
   Node(int data){
     this->data = data;
-    this->next = NULL;
+    this->next = nullptr;
   }
 };
-Node* head = NULL;
+Node* head = nullptr;
 
 void insert(int data){
   Node* newNode = new Node(data);
-  if (head == NULL){
+  if (head == nullptr){
     newNode->next = head;
     head = newNode;
   }
   else {
     Node* temp = head;
-    while (temp -> next != NULL){
+    while (temp -> next != nullptr){
       temp = temp->next;
     }
     temp -> next = newNode;
@@ -29,13 +29,13 @@ void insert(int data){
 }
 
 void printList(Node* Head){
-  if(head == NULL){
+  if(head == nullptr){
     cout << "Empty List\n";
     return;
   }
   cout << "\nList : ";
   Node* temp = Head;
-  while (temp != NULL){
+  while (temp != nullptr){
     cout << temp -> data << " ";
     temp = temp -> next;
   }
@@ -54,7 +54,7 @@ void makeLoop(int position){
       count++;
     }
     // end Node
-    while (end -> next != NULL){
+    while (end -> next != nullptr){
       end = end -> next;
     }
 
@@ -64,28 +64,28 @@ void makeLoop(int position){
 }
 
 Node* intersectingNode(){  // floyd's Algorithm
-  if (head == NULL)
-    return NULL;
+  if (head == nullptr)
+    return nullptr;
 
   Node* fast = head;
   Node* slow = head;
-  // Move both of them ny single node, until any of them is at NULL
-  while (slow != NULL and fast != NULL){
+  // Move both of them ny single node, until any of them is at nullptr
+  while (slow != nullptr and fast != NULL){
     fast = fast -> next;
-    if (fast != NULL)
+    if (fast != nullptr)
       fast = fast -> next;
     slow = slow -> next;
 
     if (slow == fast)  // Loop Exits
       return slow;   // Return common / intersection Node
   }
-  return NULL;  // No intersection -> No loop
+  return nullptr;  // No intersection -> No loop
 }
 
 Node* loopHead(){
   Node* intersection = intersectingNode();
-  if (intersection == NULL)  // No loop, No intersecting Node, return NULL
-    return NULL;
+  if (intersection == nullptr)  // No loop, No intersecting Node, return NULL
+    return nullptr;
   Node* slow = head;  // move both by single node until they become equal
   while (slow != intersection){  
     intersection = intersection -> next;  
@@ -95,27 +95,27 @@ Node* loopHead(){
 }
 
 Node* removeLoop(){
-  if (head == NULL){
-    return NULL;
+  if (head == nullptr){
+    return nullptr;
   }
   Node* headOfLoop = loopHead();
-  if (loopHead == NULL)  // no loop, no loopHead, directly return head
+  if (loopHead == nullptr)  // no loop, no loopHead, directly return head
     return head;
   Node* temp = headOfLoop;
   while (temp -> next != headOfLoop){  // loop exists
     temp = temp -> next;
   }
-  temp -> next = NULL;  // remove loop
+  temp -> next = nullptr;  // remove loop
   return head;  // then return head
 }
 
 bool isLoop(){
-  if (head == NULL)
+  if (head == nullptr)
     return false;
-
+  
   map <Node*, bool> visited;
   Node* temp = head;
-  while (temp != NULL){
+  while (temp != nullptr){
     if (visited[temp] == true)  // Loop exists
       return true;
 
