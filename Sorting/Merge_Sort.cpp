@@ -61,10 +61,14 @@ void mergeSort(int arr[], int start, int end) {
     int mid = (start + end) / 2;
 
     // divide the arrays
+    cout << "\nLeft Side" << endl;
     mergeSort(arr, start, mid);
+    cout << "\nRight Side" << endl;
     mergeSort(arr, mid+1, end);
 
+
     // merge them
+    cout << "\nMerge Me" << endl;
     merge(arr, start, end);
 }
 
@@ -74,11 +78,13 @@ int main(){
     int size = 5;
     cout << "\nBefore Sorting: ";
     for (auto i : arr) cout << i << " ";
+    cout << endl;
 
     mergeSort(arr, 0, size-1);
 
     cout << "\nAfter Sorting: ";
     for (auto i : arr) cout << i << " ";
-
+    cout << endl;
+    
     return 0;
 }
