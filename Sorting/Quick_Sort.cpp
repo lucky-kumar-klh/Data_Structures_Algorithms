@@ -19,13 +19,13 @@ int partition(int arr[], int start, int end){
 void quickSort(int arr[], int start, int end){
 
 	// base case
-	if (start >= end) return;  // if one or no element is present beside pivot
-	if (start < end) {
-		int pivot = partition(arr, start, end);
+	if (start >= end)  // if one or no element is present beside pivot 
+		return;  
+	
+	int pivot = partition(arr, start, end);
 
-		quickSort(arr, start, pivot-1);
-		quickSort(arr, pivot+1, end);
-	}
+	quickSort(arr, start, pivot-1);
+	quickSort(arr, pivot+1, end);
 }
 
 int main(){

@@ -13,43 +13,29 @@ void merge(int arr[], int start, int end) {
 
     // Copy the elements
     int index = start; 
-    for (int i = 0; i < len1; i++) {  // copy left array
-        left[i] = arr[index];
-        index++;
-    }
+    for (int i = 0; i < len1; i++)   // copy left array
+        left[i] = arr[index++];
+    
     index = mid + 1;
-    for (int i = 0; i < len2; i++) {  // copy right array
-        right[i] = arr[index];
-        index++;
-    }
+    for (int i = 0; i < len2; i++)   // copy right array
+        right[i] = arr[index++];
 
     // Algorithm - Merge two Sorted Arrays
     int l1 = 0, l2 = 0;
     index = start;
     while (l1 < len1 && l2 < len2) {
-        if (left[l1] < right[l2]) {
-            arr[index] = left[l1];
-            index++;
-            l1++;
-        }
-        else {
-            arr[index] = right[l2];
-            index++;
-            l2++;
-        }
+        if (left[l1] < right[l2]) 
+            arr[index++] = left[l1++];
+        else 
+            arr[index++] = right[l2++];
     }
 
     // check for left out arrays
-    while (l1 < len1) {
-        arr[index] = left[l1];
-        index++;
-        l1++;
-    }
-    while (l2 < len2) {
-        arr[index] = right[l2];
-        index++;
-        l2++;
-    }
+    while (l1 < len1)  
+        arr[index++] = left[l1++];
+
+    while (l2 < len2)  
+        arr[index++] = right[l2++];
 
 }
 
