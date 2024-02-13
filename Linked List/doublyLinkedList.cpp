@@ -125,6 +125,7 @@ int main(){
   deleteNode(head, 4);
 
   printList(head);
+
   listLength(head);
 
   cout << "Head : " << head -> data << endl;
