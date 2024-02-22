@@ -80,5 +80,6 @@ int main() {
 
     Node* root = createTree();
     cout << height_of_tree(root) << endl;
+    cout << getTreeHeight(root) << endl;
     return 0;
 }
