@@ -15,24 +15,22 @@ class Node {
     }
 };
 
-Node* root = nullptr;
-
-Node* createTree(Node* root) {
+Node* createTree() {
 
     int data;
     cout << "Enter data: ";
     cin >> data;
 
-    root = new Node(data);
-
     if (data == -1)
         return nullptr;
 
+    Node* root = new Node(data);
+
     cout << "Enter left of " << data << ": ";
-    root -> left = createTree(root->left);
+    root -> left = createTree();
     
     cout << "Enter right of " << data << "; ";
-    root -> right = createTree(root->right);
+    root -> right = createTree();
 
     return root;
 }
@@ -108,7 +106,7 @@ void postOderTraversal(Node* root) {  // L R N
 
 int main(){
 
-    root = createTree(root);
+    Node* root = createTree();
 
     levelOrderTraversal(root);
     cout << endl;
