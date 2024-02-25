@@ -29,7 +29,7 @@ Node* createTree() {
     cout << "Enter left of " << data << ": ";
     root -> left = createTree();
     
-    cout << "Enter right of " << data << "; ";
+    cout << "Enter right of " << data << ": ";
     root -> right = createTree();
 
     return root;
@@ -48,6 +48,7 @@ int height_of_tree(Node* Root){
         Node* temp = q.front();
         q.pop();
         if (temp == nullptr) {
+            // cout << endl;
             if (!q.empty()) {
                 q.push(nullptr);
                 depth++;
