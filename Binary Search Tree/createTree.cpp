@@ -66,6 +66,40 @@ void levelOrderTraversal(Node* root) {
     }
 }
 
+int sumOfNodes(Node* root) {
+    if (root == nullptr)
+        return 0;
+
+    return (root -> data) + sumOfNodes(root -> left) + sumOfNodes(root -> right);
+}
+
+int countNodes(Node* root) {
+    if (root == nullptr)
+        return 0;
+
+    return 1 + countNodes(root -> left) + countNodes(root -> right);
+}
+
+int noOfLeaves(Node* root) {
+    if (root == nullptr)
+        return 0;
+
+    if (root -> left == nullptr and root -> right == nullptr)
+        return 1;
+
+    return noOfLeaves(root -> left) + noOfLeaves(root -> right);
+}
+
+int noOfNonLeaves(Node* root) {
+    if (root == nullptr)
+        return 0;
+
+    if (root -> right == nullptr and root -> left)
+        return 0;
+    
+    return 1 + noOfNonLeaves(root) + noOfNonLeaves(root);
+}
+
 void inOrderTraversal(Node* root) {  // L N R
 
     // base case
@@ -119,6 +153,10 @@ int main(){
 
     postOderTraversal(root);
     cout << endl;
+
+    cout << "Total No of Nodes in this tree is " << countNodes(root) << endl;
+    cout << "Sum of elements in tree is " << sumOfNodes(root) << endl;
+    cout << "Total No of Leaves are " << noOfLeaves(root) << endl;
 
     return 0;
 }

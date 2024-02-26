@@ -69,12 +69,14 @@ int getTreeHeight(Node* root) {
     if (root == nullptr)
         return 0;
 
-    int left = getTreeHeight(root -> left);
-    int right = getTreeHeight(root -> right);
+    // int left = getTreeHeight(root -> left);
+    // int right = getTreeHeight(root -> right);
 
-    int ans = max(left, right) + 1;
+    // int ans = max(left, right) + 1;
 
-    return ans;
+    // return ans;
+    // OR
+    return 1 + max(getTreeHeight(root -> left), getTreeHeight(root -> right));
 }
 
 int main() {
