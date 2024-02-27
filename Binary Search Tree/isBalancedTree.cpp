@@ -35,9 +35,32 @@ Node* createTree() {
     return root;
 }
 
+int height(Node* root, bool &valid) {
+    if (root == nullptr)
+        return 0;
+
+    if (valid) {    
+        int left = height(root->left, valid);
+        int right = height(root->right, valid);
+
+        if (abs(left-right) > 1)
+            valid = 0;
+
+        return max(left, right) + 1;
+    }
+}
+
+bool isBalancedTree(Node* root) {
+    bool valid = 1;
+    height(root, valid);
+
+    return valid;
+}
+
 int main(){
   
     Node* root = createTree();
-
+    if (isBalancedTree(root)) cout << "Tree is Balanced" << endl;
+    else cout << "Un-Balanced Tree" << endl;
     return 0;
 }

@@ -96,6 +96,19 @@ bool isIdentical(Node *r1, Node *r2){
     return true;
 }
 
+bool areIdenticalTrees(Node* r1, Node* r2) {
+    if (r1 == nullptr and r2 == nullptr)
+            return 1;
+
+    if ((r1 != nullptr && r2 == nullptr) or (r1 == nullptr && r2 != nullptr))
+        return 0;
+
+    if (r1->data != r2->data)
+        return 0;
+    
+    return isIdentical(r1->left, r2->left) && isIdentical(r1->right, r2->right);
+}
+
 int main() {
 
     Node* root1 = createTree();
