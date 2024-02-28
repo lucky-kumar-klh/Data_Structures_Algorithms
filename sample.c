@@ -1,23 +1,109 @@
 #include <stdio.h>
-int main(){
-    int n;
-    printf("Enter any number : ");
-    scanf("%d", &n);
+#include <stdlib.h>
 
-    int min;
-    for (int i = 1; i < 2*n; i++){
+struct Node {
+    int value;
+    struct Node* next;
+};
 
-        for (int j = 1; j < 2*n; j++){
+struct Node* head = NULL;
+struct Node* ending_node = NULL;
 
-            int a = i;
-            if (a > n) a = 2*n - i;
-            int b = j;
-            if (b > n) b = 2*n - j;
-            if (a < b) min = a;
-            else min = b;
-            printf("%d ", min);
-        }
-        printf("\n");
+void create_list() {
+
+    int data;
+    printf("Enter data: ");
+    scanf("%d", &data);
+
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+
+    // Assign data to node
+    new_node -> value = data;
+
+    // Assign null to the last node
+    new_node -> next = NULL;
+
+    head = new_node;
+    ending_node = new_node;
+
+}
+
+void insert_at_begin() {
+
+    int data;
+    printf("Enter data: ");
+    scanf("%d", &data);
+
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+
+    // Assign data to node
+    new_node -> value = data;
+
+    // Assign null to the last node
+    new_node -> next = NULL;
+
+    //     [ d | n ] -> [ d | n ] -> [ d | n ] -> [ d | n ] -> NULL
+    //      new_node 
+    //       Head               
+
+    if (head == NULL)
+
+        head = new_node;
+    
+    else {
+
+        new_node -> next = head;
+        head = new_node;
     }
+
+}
+
+void insert_at_last(){ 
+
+    int data;
+    printf("Enter data: ");
+    scanf("%d", &data);
+
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+
+    // Assign data to node
+    new_node -> value = data;
+
+    // Assign null to the last node
+    new_node -> next = NULL;
+
+    // if list is empty
+    
+    //  [ d | n ] -> NULL      [ d | n ] -> NULL
+    //     Head
+    //  ending_node  ---------->  new_node
+
+
+    if (head == NULL) {
+        head = new_node;
+        ending_node = new_node;
+    }
+
+    // if there is an existing list already
+    //     [ d | n ] -> [ d | n ] -> [ d | n ] -> NULL
+    //       Head
+    //                               ending_node
+    else {
+
+        ending_node -> next = new_node;
+
+        ending_node = new_node;
+
+    }
+}
+
+int main(){
+
+    create_list();  // head : Create only single Node
+
+    insert_at_last();  // Join new Node at last always
+
+    insert_at_begin();  // Join new Node from starting always
+
     return 0;
 }
