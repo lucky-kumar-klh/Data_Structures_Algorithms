@@ -35,18 +35,6 @@ Node* createTree() {
     return root;
 }
 
-void mirrorTree(Node* root) {   // swap every possible node 
-    if (root == nullptr)
-        return;
-
-    Node* temp = root -> left;
-    root -> left = root -> right;
-    root -> right = temp;
-
-    mirrorTree(root -> left);
-    mirrorTree(root -> right);
-}
-
 int main(){
   
     Node* root = createTree();
