@@ -14,7 +14,7 @@ class Node {
     
     Node(int prod_id, string name, int quantity) {
         this -> prod_id = prod_id;
-        this -> name = prod_id;
+        this -> name = name;
         this -> quantity = quantity;
         this -> next = nullptr;
         this -> prev = nullptr;
@@ -57,9 +57,12 @@ Node* search_product() {
 void add_prod() {    // Insert At last
     string name;
     int quantity, prod_id;
-    cout << "Enter Product ID: "; cin >> prod_id;
-    cout << "Name of the Product: "; cin >> name;
-    cout << "Quantity: "; cin >> quantity;
+    cout << "Enter Product ID: "; 
+    cin >> prod_id;
+    cout << "Name of the Product: "; 
+    cin >> name;
+    cout << "Quantity: "; 
+    cin >> quantity;
 
     Node* newNode = new Node(prod_id, name, quantity);
 
@@ -100,8 +103,8 @@ void delete_prod() {    // Search In last
     }
 }
 
-void display_prod() {    // Traverse to display
-    if (search_product() == nullptr){
+void display_prod(search_product()) {    // Traverse to display
+    if ( == nullptr){
         cout << "Empty Product List" << endl;
         return;
     }
