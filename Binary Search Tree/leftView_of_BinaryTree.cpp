@@ -35,6 +35,18 @@ Node* createTree() {
     return root;
 }
 
+void leftView_Using_Recursion(Node* root, int level, vector <int> &ans) {
+    // base case
+    if (!root)
+        return;
+    if (level == ans.size()){
+        // 1st time 
+        ans.push_back(root -> data);
+    }
+    leftView_Using_Recursion(root -> left, level+1, ans);
+    leftView_Using_Recursion(root -> right, level+1, ans);
+} 
+
 vector<int> leftView(Node *root) {
    // Your code here
     if (root == nullptr)
@@ -87,6 +99,8 @@ int main(){
     Node* root = createTree();
     
     vector<int> ans = leftView(root);
+    vector<int> a;
+    vector<int> ans1 = leftView_Using_Recursion(root, 0, a);
     for (int it : ans)
         cout << it << " ";
     cout << endl;

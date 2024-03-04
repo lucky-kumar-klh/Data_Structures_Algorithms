@@ -1,109 +1,68 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#define size 50
 
-struct Node {
-    int value;
-    struct Node* next;
-};
+char stack[size];
+int top = -1;
 
-struct Node* head = NULL;
-struct Node* ending_node = NULL;
-
-void create_list() {
-
-    int data;
-    printf("Enter data: ");
-    scanf("%d", &data);
-
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-
-    // Assign data to node
-    new_node -> value = data;
-
-    // Assign null to the last node
-    new_node -> next = NULL;
-
-    head = new_node;
-    ending_node = new_node;
-
+void push(char ch) {
+    if (top == (size-1)){
+        printf("Full Stack\n");
+        return;
+    }
+    stack[++top] = ch;
+    printf("%c Pushed Successfully !\n", stack[top]);
 }
 
-void insert_at_begin() {
-
-    int data;
-    printf("Enter data: ");
-    scanf("%d", &data);
-
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-
-    // Assign data to node
-    new_node -> value = data;
-
-    // Assign null to the last node
-    new_node -> next = NULL;
-
-    //     [ d | n ] -> [ d | n ] -> [ d | n ] -> [ d | n ] -> NULL
-    //      new_node 
-    //       Head               
-
-    if (head == NULL)
-
-        head = new_node;
-    
-    else {
-
-        new_node -> next = head;
-        head = new_node;
+void pop() {
+    if (top == -1) {
+        printf("Empty-Stack\n");
+        return;
     }
-
-}
-
-void insert_at_last(){ 
-
-    int data;
-    printf("Enter data: ");
-    scanf("%d", &data);
-
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-
-    // Assign data to node
-    new_node -> value = data;
-
-    // Assign null to the last node
-    new_node -> next = NULL;
-
-    // if list is empty
-    
-    //  [ d | n ] -> NULL      [ d | n ] -> NULL
-    //     Head
-    //  ending_node  ---------->  new_node
-
-
-    if (head == NULL) {
-        head = new_node;
-        ending_node = new_node;
-    }
-
-    // if there is an existing list already
-    //     [ d | n ] -> [ d | n ] -> [ d | n ] -> NULL
-    //       Head
-    //                               ending_node
-    else {
-
-        ending_node -> next = new_node;
-
-        ending_node = new_node;
-
-    }
+    printf("%c popped Successfully !\n", stack[top--]);
 }
 
 int main(){
 
-    create_list();  // head : Create only single Node
+    char input[size];
+    printf("Enter the Expression: ");
+    scanf("%[^\n]s", input);
+    
+    int matching = 1;
 
-    insert_at_last();  // Join new Node at last always
+    for (int i = 0; i < strlen(input); i++) {
+        if (input[i] == '(' || input[i] == '{' || input[i] == '[') push(input[i]);
+        else if (input[i] == ')' || input[i] == '}' || input[i] == ']') {
+            if (top == -1){ 
+                matching = 0;
+                printf("Empty Stack !\n");
+                break;
+            }
+            switch (input[i]) {
+                case ')':
+                    if (stack[top] == '(')  pop();
+                    else matching = 0;
+                    break;
+                case '}':
+                    if (stack[top] == '{')  pop();
+                    else matching = 0;
+                    break;
+                case ']':
+                    if (stack[top] == '[')  pop();
+                    else matching = 0;
+                    break;
+            }
+        }
+    }
+    if (top != -1) matching = 0;   // After loop, the stack should be empty, but if not -1, then Unmatched!
+    
+    if (top == -1 && strlen(input) != 0) {
+        printf("Ignoring the normal\n");
+        matching = 0;
+    }
 
-    insert_at_begin();  // Join new Node from starting always
-
+    if (matching) printf("Your Expression is Correct !\n");
+    else printf("Unmatched Expression\n");
     return 0;
 }
