@@ -38,7 +38,6 @@ Node* findMiddle(Node *head) {
     }
 
     return middleNode;
-
 }
 
 // 2nd Approach
