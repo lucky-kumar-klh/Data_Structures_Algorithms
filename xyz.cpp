@@ -1,142 +1,50 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
 
+// Create a node class
 class Node {
-
-
-    public:
-        int prod_id;
-        string name;
-        int quantity;
-
-        Node* next;
-        Node* prev;
-    
-    Node(int prod_id, string name, int quantity) {
-        this -> prod_id = prod_id;
-        this -> name = name;
-        this -> quantity = quantity;
-        this -> next = nullptr;
-        this -> prev = nullptr;
-    }
+public:
+  int data;
+  Node *next;
 };
-Node* head = nullptr;
-Node* tail = nullptr;
 
-int choice;
-
-void user_input(){ 
-    cout << "1. Add\n2. Delete\n3. Display\n4. Exit\nChoose Any: ";
-    cin >> choice;
-
-} 
-
-Node* search_product() {
-    Node* temp = head;
-    if (temp == nullptr)
-        return nullptr;
-
-    int id;
-    cout << "Enter ID: "; cin >> id;
-
-    if (temp -> next == nullptr && temp -> prod_id == id) {
-        return temp;
+void insert(int first_data, vector<Node *> &v, int size) {
+  if (v[first_data % size] == nullptr) {
+    v[first_data % size] = new Node();
+    v[first_data % size]->data = first_data;
+    v[first_data % size]->next = nullptr;
+  } else {
+    Node *temp = v[first_data % size];
+    while (temp->next != nullptr) {
+      temp = temp->next;
     }
-
-    while (temp -> next != nullptr) {
-
-        if (temp -> prod_id == id) 
-            return temp;
-        
-        temp = temp -> next;
-    }
-
-    cout << "Not Found" << endl;
+    temp->next = new Node();
+    temp->next->data = first_data;
+    temp->next->next = nullptr;
+  }
 }
 
-void add_prod() {    // Insert At last
-    string name;
-    int quantity, prod_id;
-    cout << "Enter Product ID: "; 
-    cin >> prod_id;
-    cout << "Name of the Product: "; 
-    cin >> name;
-    cout << "Quantity: "; 
-    cin >> quantity;
+int main() {
 
-    Node* newNode = new Node(prod_id, name, quantity);
+  int size = 10;
 
-    if (head == nullptr){
-        head = newNode;
-        tail = newNode;
+  vector<Node *> v(size, NULL);
+
+  vector<int> input = {19, 29, 34, 41, 54, 65, 72, 85, 97, 100};
+  for (auto data : input) {
+    insert(data, v, size);
+  }
+
+  // printing
+  for (auto itr : v) {
+    Node *temp = itr;
+    while (temp != nullptr) {
+      cout << temp->data << " ";
+      temp = temp->next;
     }
-    else {   
-        tail -> next = newNode;
-        newNode -> prev = tail;
-        tail = newNode;
-    }
-}
+    cout << endl;
+  }
 
-void delete_prod() {    // Search In last
-
-    if (search_product() == nullptr){
-        cout << "Empty Product List" << endl;
-        return;
-    }
-    
-    Node* temp = search_product();
-
-    if (temp -> next == nullptr and temp -> prev == nullptr) {  // 1st Node
-        head = nullptr;
-        tail = nullptr;
-        cout << "Deleted Product with ID \'" << temp -> prod_id << "\' Successfully !" << endl;
-        delete temp;
-        return;
-    } 
-    else {
-        Node* del = temp -> prev;
-        del -> next = temp -> next;
-        temp -> next -> prev = del;
-        cout << "Deleted Product with ID \'" << temp -> prod_id << "\' Successfully !" << endl;
-        delete temp;
-        return;
-    }
-}
-
-void display_prod(search_product()) {    // Traverse to display
-    if ( == nullptr){
-        cout << "Empty Product List" << endl;
-        return;
-    }
-    Node* temp = search_product();
-    cout << "Product ID: " << temp -> prod_id << endl;
-    cout << "Name: " << temp -> name << endl;
-    cout << "Quantity: " << temp -> quantity << endl;
-
-}
-
-int main(){
-  
-    user_input();
-    while (1) {
-        switch (choice) {
-            case 1:
-                add_prod();
-                break;
-            case 2:
-                delete_prod();
-                break;
-            case 3:
-                display_prod();
-                break;
-            case 4:
-                cout << "Thank You for using my Program" << endl;
-                exit(1);
-            default:
-                cout << "Invalid Input\nPlease Try Agian !!" << endl; 
-        }
-        user_input();
-    }
-
-    return 0;
+  return 0;
 }
